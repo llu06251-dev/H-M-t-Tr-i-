@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Mặt Trời của Tôi</title>
+    <style>
+        /* Tông màu và phong chữ bình thường, dễ đọc */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            /* Nền chủ yếu là vũ trụ với các vì sao lánh lánh bằng hiệu ứng gradient */
+            background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+            background-attachment: fixed;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid #333;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            color: #f1c40f;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            color: #bdc3c7;
+        }
+
+        /* Khu vực chọn tích/bấm vào các hành tinh */
+        .nav-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .planet-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .planet-btn:hover {
+            background: #f1c40f;
+            color: #000;
+            border-color: #f1c40f;
+        }
+
+        .planet-btn.active {
+            background: #e67e22;
+            color: white;
+            border-color: #e67e22;
+            font-weight: bold;
+        }
+
+        /* Khu vực hiển thị thông tin từng phần của hành tinh */
+        .content-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .planet-section {
+            display: none; /* Ẩn mặc định, chỉ hiện khi được chọn */
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #34495e;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .planet-section.active {
+            display: block;
+        }
+
+        .planet-section h2 {
+            color: #f1c40f;
+            margin-top: 0;
+            border-bottom: 2px solid #e67e22;
+            padding-bottom: 10px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .info-item strong {
+            color: #3498db;
+        }
+
+        /* Hiệu ứng chuyển động mượt mà */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(100px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>HỆ MẶT TRỜI CỦA TÔI</h1>
+        <p>Khám phá thông tin chi tiết về các hành tinh trong thái dương hệ</p>
+    </header>
+
+    <!-- Thanh điều hướng để chọn tích chọn các hành tinh -->
+    <div class="nav-container">
+        <button class="planet-btn active" onclick="showPlanet('saothuy')">Sao Thủy</button>
+        <button class="planet-btn" onclick="showPlanet('saokim')">Sao Kim</button>
+        <button class="planet-btn" onclick="showPlanet('traidat')">Trái Đất</button>
+        <button class="planet-btn" onclick="showPlanet('saohoa')">Sao Hỏa</button>
+        <button class="planet-btn" onclick="showPlanet('saomoc')">Sao Mộc</button>
+        <button class="planet-btn" onclick="showPlanet('saothan')">Sao Thổ</button>
+        <button class="planet-btn" onclick="showPlanet('saovuong')">Sao Thiên Vương</button>
+        <button class="planet-btn" onclick="showPlanet('saohai')">Sao Hải Vương</button>
+        <button class="planet-btn" onclick="showPlanet('saodiemvuong')">Sao Diêm Vương</button>
+    </div>
+
+    <!-- Nội dung chi tiết rõ ràng của từng phần hành tinh -->
+    <div class="content-container">
+
+        <!-- 1. Sao Thủy -->
+        <div id="saothuy" class="planet-section active">
+            <h2>Sao Thủy (Mercury)</h2>
+            <p>Sao Thủy là hành tinh nhỏ nhất và nằm gần Mặt Trời nhất trong Hệ Mặt Trời. Vì không có bầu khí quyển để giữ nhiệt, hành tinh này có sự biến thiên nhiệt độ ngày và đêm khắc nghiệt nhất.</p>
+            <div class="info-grid">
+                <div class="info-item"><strong>Khoảng cách đến Mặt Trời:</strong> ~57.9 triệu km</div>
+                <div class="info-item"><strong>Chu kỳ quỹ đạo:</strong> 88 ngày Trái Đất</div>
+                <div class="info-item"><strong>Đường kính:</strong> 4,879 km</div>
+                <div class="info-item"><strong>Số vệ tinh:</strong> 0</div>
+            </div>
+        </div>
+
+        <!-- 2. Sao Kim -->
+        <div id="saokim" class="planet-section">
+            <h2>Sao Kim (Venus)</h2>
+            <p>Sao Kim có kích thước gần bằng Trái Đất nhưng sở hữu một bầu khí quyển siêu dày đặc chứa đầy khí carbon dioxide độc hại, tạo ra hiệu ứng nhà kính mạnh mẽ khiến nó trở thành hành tinh nóng nhất Hệ Mặt Trời.</p>
+            <div class="info-grid">
+                <div class="info-item"><strong>Khoảng cách đến Mặt Trời:</strong> ~108.2 triệu km</div>
+                <div class="info-item"><strong>Chu kỳ quỹ đạo:</strong> 225 ngày Trái Đất</div>
+                <div class="info-item"><strong>Đường kính:</strong> 12,104 km</div>
+                <div class="info-item"><strong>Số vệ tinh:</strong> 0</div>
+            </div>
+        </div>
+
+        <!-- 3. Trái Đất -->
+        <div id="traidat" class="planet-section">
+            <h2>Trái Đất (Earth)</h2>
+            <p>Hành tinh xanh của chúng ta, nơi duy nhất trong vũ trụ được biết đến hiện tại là có sự sống phát triển. Trái Đất có nước ở dạng lỏng chiếm 71% bề mặt và một bầu khí quyển lý tưởng giàu oxy.</p>
+            <div class="info-grid">
+                <div class="info-item"><strong>Khoảng cách đến Mặt Trời:</strong> ~149.6 triệu km</div>
+                <div class="info-item"><strong>Chu kỳ quỹ đạo:</strong> 365.25 ngày</div>
+                <div class="info-item"><strong>Đường kính:</strong> 12,742 km</div>
+                <div class="info-item"><strong>Số vệ tinh:</strong> 1 (Mặt Trăng)</div>
+            </div>
+        </div>
+
+        <!-- 4. Sao Hỏa -->
+        <div id="saohoa" class="planet-section">
+            <h2>Sao Hỏa (Mars)</h2>
+            <p>Còn được gọi là "Hành tinh Đỏ" do bề mặt chứa nhiều sắt oxit (gỉ sét). Đây là mục tiêu hàng đầu của con người trong việc tìm kiếm dấu vết sự sống cổ đại và lên kế hoạch định cư trong tương lai.</p>
+            <div class="info-grid">
+                <div class="info-item"><strong>Khoảng cách đến Mặt Trời:</strong> ~227.9 triệu km</div>
+                <div class="info-item"><strong>Chu kỳ quỹ đạo:</strong> 687 ngày Trái Đất</div>
+                <div class="info-item"><strong>Đường kính:</strong> 6,779 km</div>
+                <div class="info-item"><strong>Số vệ tinh:</strong> 2</div>
+            </div>
+        </div>
+
+        <!-- 5. Sao Mộc -->
+        <div id="saomoc" class="planet-section">
+            <h2>Sao Mộc (Jupiter)</h2>
+            <p>Hành tinh lớn nhất trong Hệ Mặt Trời, là một hành tinh khí khổng lồ với khối lượng bằng 2,5 lần tất cả các hành tinh khác cộng lại. Nổi tiếng nhất với Vết Đỏ Lớn - một cơn bão khổng lồ đã tồn tại hàng trăm năm.</p>
+            <div class="info-grid">
+                <div class="info-item"><strong>Khoảng cách đến Mặt Trời:</strong> ~778.5 triệu km</div>
+                <div class="info-item"><strong>Chu kỳ quỹ đạo:</strong> 12 năm Trái Đất</div>
+                <div class="info-item"><strong>Đường kính:</strong> 139,820 km</div>
+                <div class="info-item"><strong>Số vệ tinh:</strong> 95 (đã xác nhận)</div>
+            </div>
+        </div>
+
+        <!-- 6. Sao Thổ -->
+        <div id="saothan" class="planet-section">
+            <h2>Sao Thổ (Saturn)</h2>
+            <p>Hành tinh khí khổng lồ lớn thứ hai, nổi bật và lộng lẫy nhất vũ trụ nhờ hệ thống vành đai băng và bụi đá rộng lớn, rực rỡ bao quanh hành tinh.</p>
+            <div class="info-grid">
+                <div class="info-item"><strong>Khoảng cách đến Mặt Trời:</strong> ~1.43 tỷ km</div>
+                <div class="info-item"><strong>Chu kỳ quỹ đạo:</strong> 29 năm Trái Đất</div>
+                <div class="info-item"><strong>Đường kính:</strong> 116,460 km</div>
+                <div class="info-item"><strong>Số vệ tinh:</strong> 146</div>
+            </div>
+        </div>
+
+        <!-- 7. Sao Thiên Vương -->
+        <div id="saovuong" class="planet-section">
+            <h2>Sao Thiên Vương (Uranus)</h2>
+            <p>Một hành tinh băng khổng lồ có màu xanh lục lam độc đáo do khí methane trong khí quyển. Điểm đặc biệt của Sao Thiên Vương là nó có trục quay bị nghiêng gần như song song với mặt phẳng quỹ đạo (quay "nằm ngang").</p>
+            <div class="info-grid">
+                <div class="info-item"><strong>Khoảng cách đến Mặt Trời:</strong> ~2.87 tỷ km</div>
+                <div class="info-item"><strong>Chu kỳ quỹ đạo:</strong> 84 năm Trái Đất</div>
+                <div class="info-item"><strong>Đường kính:</strong> 50,724 km</div>
+                <div class="info-item"><strong>Số vệ tinh:</strong> 28</div>
+            </div>
+        </div>
+
+        <!-- 8. Sao Hải Vương -->
